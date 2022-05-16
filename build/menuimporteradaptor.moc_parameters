@@ -1,0 +1,5 @@
+-I/home/tokyo/Documents/GitHub/statusbar-test
+-I/home/tokyo/Documents/GitHub/statusbar-test/build
+-o
+/home/tokyo/Documents/GitHub/statusbar-test/build/menuimporteradaptor.moc
+/home/tokyo/Documents/GitHub/statusbar-test/build/menuimporteradaptor.h

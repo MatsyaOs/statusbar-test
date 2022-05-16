@@ -1,0 +1,10 @@
+/home/tokyo/Documents/GitHub/statusbar-test/build/CMakeFiles/install/strip.dir
+/home/tokyo/Documents/GitHub/statusbar-test/build/CMakeFiles/install/local.dir
+/home/tokyo/Documents/GitHub/statusbar-test/build/CMakeFiles/install.dir
+/home/tokyo/Documents/GitHub/statusbar-test/build/CMakeFiles/list_install_components.dir
+/home/tokyo/Documents/GitHub/statusbar-test/build/CMakeFiles/rebuild_cache.dir
+/home/tokyo/Documents/GitHub/statusbar-test/build/CMakeFiles/edit_cache.dir
+/home/tokyo/Documents/GitHub/statusbar-test/build/CMakeFiles/translations.dir
+/home/tokyo/Documents/GitHub/statusbar-test/build/CMakeFiles/matsya-statusbar.dir
+/home/tokyo/Documents/GitHub/statusbar-test/build/CMakeFiles/KF5WindowSystem_QCH.dir
+/home/tokyo/Documents/GitHub/statusbar-test/build/CMakeFiles/matsya-statusbar_autogen.dir
