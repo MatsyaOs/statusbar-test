@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 - 2022 CutefishOS Team.
+ * Copyright (C) 2021 - 2022 MatsyaOS Team.
  *
- * Author:     Kate Leet <kate@cutefishos.com>
+ * Author:     Kate Leet <kate@matsyaos.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,17 +23,17 @@ import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
-import Cutefish.Accounts 1.0 as Accounts
-import Cutefish.Bluez 1.0 as Bluez
-import Cutefish.StatusBar 1.0
-import Cutefish.Audio 1.0
-import FishUI 1.0 as FishUI
+import Matsya.Accounts 1.0 as Accounts
+import Matsya.Bluez 1.0 as Bluez
+import Matsya.StatusBar 1.0
+import Matsya.Audio 1.0
+import MatsyaUI 1.0 as MatsyaUI
 
 ControlCenterDialog {
     id: control
 
-    width: _mainLayout.implicitWidth + FishUI.Units.largeSpacing * 3
-    height: _mainLayout.implicitHeight + FishUI.Units.largeSpacing * 3
+    width: _mainLayout.implicitWidth + MatsyaUI.Units.largeSpacing * 3
+    height: _mainLayout.implicitHeight + MatsyaUI.Units.largeSpacing * 3
 
     onWidthChanged: adjustCorrectLocation()
     onHeightChanged: adjustCorrectLocation()
@@ -41,22 +41,22 @@ ControlCenterDialog {
 
     property point position: Qt.point(0, 0)
     property var margin: 4 * Screen.devicePixelRatio
-    property var borderColor: windowHelper.compositing ? FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.3)
-                                                                  : Qt.rgba(0, 0, 0, 0.2) : FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
+    property var borderColor: windowHelper.compositing ? MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.3)
+                                                                  : Qt.rgba(0, 0, 0, 0.2) : MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
                                                                                                                   : Qt.rgba(0, 0, 0, 0.15)
 
     Accounts.UserAccount {
         id: currentUser
     }
 
-    FishUI.WindowBlur {
+    MatsyaUI.WindowBlur {
         view: control
         geometry: Qt.rect(control.x, control.y, control.width, control.height)
         windowRadius: _background.radius
         enabled: true
     }
 
-    FishUI.WindowShadow {
+    MatsyaUI.WindowShadow {
         view: control
         geometry: Qt.rect(control.x, control.y, control.width, control.height)
         radius: _background.radius
@@ -65,9 +65,9 @@ ControlCenterDialog {
     Rectangle {
         id: _background
         anchors.fill: parent
-        radius: windowHelper.compositing ? FishUI.Theme.bigRadius * 1.5 : 0
-        color: FishUI.Theme.darkMode ? "#4D4D4D" : "#FFFFFF"
-        opacity: windowHelper.compositing ? FishUI.Theme.darkMode ? 0.5 : 0.7 : 1.0
+        radius: windowHelper.compositing ? MatsyaUI.Theme.bigRadius * 1.5 : 0
+        color: MatsyaUI.Theme.darkMode ? "#4D4D4D" : "#FFFFFF"
+        opacity: windowHelper.compositing ? MatsyaUI.Theme.darkMode ? 0.5 : 0.7 : 1.0
         antialiasing: true
         border.width: 1 / Screen.devicePixelRatio
         border.pixelAligned: Screen.devicePixelRatio > 1 ? false : true
@@ -84,11 +84,11 @@ ControlCenterDialog {
     ColumnLayout {
         id: _mainLayout
         anchors.fill: parent
-        anchors.margins: FishUI.Units.largeSpacing * 1.5
-        spacing: FishUI.Units.largeSpacing
+        anchors.margins: MatsyaUI.Units.largeSpacing * 1.5
+        spacing: MatsyaUI.Units.largeSpacing
 
         RowLayout {
-            spacing: FishUI.Units.smallSpacing * 1.5
+            spacing: MatsyaUI.Units.smallSpacing * 1.5
 
             Image {
                 id: userIcon
@@ -126,14 +126,14 @@ ControlCenterDialog {
         }
 
         GridLayout {
-            rowSpacing: FishUI.Units.largeSpacing
-            columnSpacing: FishUI.Units.largeSpacing
+            rowSpacing: MatsyaUI.Units.largeSpacing
+            columnSpacing: MatsyaUI.Units.largeSpacing
             columns: 3
 
             StandardCard {
                 Layout.preferredWidth: 96
                 Layout.preferredHeight: 96
-                icon: FishUI.Theme.darkMode ? "qrc:/images/dark/system-shutdown.svg"
+                icon: MatsyaUI.Theme.darkMode ? "qrc:/images/dark/system-shutdown.svg"
                                             : "qrc:/images/light/system-shutdown.svg"
                 visible: true
                 checked: false
@@ -148,7 +148,7 @@ ControlCenterDialog {
             StandardCard {
                 Layout.preferredWidth: 96
                 Layout.preferredHeight: 96
-                icon: FishUI.Theme.darkMode ? "qrc:/images/dark/system-reboot.svg"
+                icon: MatsyaUI.Theme.darkMode ? "qrc:/images/dark/system-reboot.svg"
                                             : "qrc:/images/light/system-reboot.svg"
                 visible: true
                 checked: false
@@ -163,7 +163,7 @@ ControlCenterDialog {
             StandardCard {
                 Layout.preferredWidth: 96
                 Layout.preferredHeight: 96
-                icon: FishUI.Theme.darkMode ? "qrc:/images/dark/system-log-out.svg"
+                icon: MatsyaUI.Theme.darkMode ? "qrc:/images/dark/system-log-out.svg"
                                             : "qrc:/images/light/system-log-out.svg"
                 visible: true
                 checked: false
@@ -178,7 +178,7 @@ ControlCenterDialog {
             StandardCard {
                 Layout.preferredWidth: 96
                 Layout.preferredHeight: 96
-                icon: FishUI.Theme.darkMode ? "qrc:/images/dark/system-lock-screen.svg"
+                icon: MatsyaUI.Theme.darkMode ? "qrc:/images/dark/system-lock-screen.svg"
                                             : "qrc:/images/light/system-lock-screen.svg"
                 visible: true
                 checked: false
@@ -193,7 +193,7 @@ ControlCenterDialog {
             StandardCard {
                 Layout.preferredWidth: 96
                 Layout.preferredHeight: 96
-                icon: FishUI.Theme.darkMode ? "qrc:/images/dark/system-suspend.svg"
+                icon: MatsyaUI.Theme.darkMode ? "qrc:/images/dark/system-suspend.svg"
                                             : "qrc:/images/light/system-suspend.svg"
                 visible: true
                 checked: false

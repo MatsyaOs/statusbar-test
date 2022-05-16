@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 CutefishOS Team.
+ * Copyright (C) 2021 MatsyaOS Team.
  *
- * Author:     Reion Wong <aj@cutefishos.com>
+ * Author:     Reion Wong <aj@matsyaos.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -16,24 +16,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
- 
+
 import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Window 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
 
-import Cutefish.Accounts 1.0 as Accounts
-import Cutefish.Bluez 1.0 as Bluez
-import Cutefish.StatusBar 1.0
-import Cutefish.Audio 1.0
-import FishUI 1.0 as FishUI
+import Matsya.Accounts 1.0 as Accounts
+import Matsya.Bluez 1.0 as Bluez
+import Matsya.StatusBar 1.0
+import Matsya.Audio 1.0
+import MatsyaUI 1.0 as MatsyaUI
 
 ControlCenterDialog {
     id: control
 
     width: 450
-    height: _mainLayout.implicitHeight + FishUI.Units.largeSpacing * 2
+    height: _mainLayout.implicitHeight + MatsyaUI.Units.largeSpacing * 2
 
     property var margin: 4 * Screen.devicePixelRatio
     property point position: Qt.point(0, 0)
@@ -42,8 +42,8 @@ ControlCenterDialog {
     property bool bluetoothDisConnected: Bluez.Manager.bluetoothBlocked
     property var defaultSinkValue: defaultSink ? defaultSink.volume / PulseAudio.NormalVolume * 100.0 : -1
 
-    property var borderColor: windowHelper.compositing ? FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.3)
-                                                                  : Qt.rgba(0, 0, 0, 0.2) : FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
+    property var borderColor: windowHelper.compositing ? MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.3)
+                                                                  : Qt.rgba(0, 0, 0, 0.2) : MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
                                                                                                                   : Qt.rgba(0, 0, 0, 0.15)
 
     property var volumeIconName: {
@@ -119,14 +119,14 @@ ControlCenterDialog {
         id: currentUser
     }
 
-    FishUI.WindowBlur {
+    MatsyaUI.WindowBlur {
         view: control
         geometry: Qt.rect(control.x, control.y, control.width, control.height)
         windowRadius: _background.radius
         enabled: true
     }
 
-    FishUI.WindowShadow {
+    MatsyaUI.WindowShadow {
         view: control
         geometry: Qt.rect(control.x, control.y, control.width, control.height)
         radius: _background.radius
@@ -135,9 +135,9 @@ ControlCenterDialog {
     Rectangle {
         id: _background
         anchors.fill: parent
-        radius: windowHelper.compositing ? FishUI.Theme.bigRadius * 1.5 : 0
-        color: FishUI.Theme.darkMode ? "#4D4D4D" : "#F0F0F0"
-        opacity: windowHelper.compositing ? FishUI.Theme.darkMode ? 0.6 : 0.8 : 1.0
+        radius: windowHelper.compositing ? MatsyaUI.Theme.bigRadius * 1.5 : 0
+        color: MatsyaUI.Theme.darkMode ? "#4D4D4D" : "#F0F0F0"
+        opacity: windowHelper.compositing ? MatsyaUI.Theme.darkMode ? 0.6 : 0.8 : 1.0
         antialiasing: true
         border.width: 1 / Screen.devicePixelRatio
         border.pixelAligned: Screen.devicePixelRatio > 1 ? false : true
@@ -154,8 +154,8 @@ ControlCenterDialog {
     ColumnLayout {
         id: _mainLayout
         anchors.fill: parent
-        anchors.margins: FishUI.Units.largeSpacing
-        spacing: FishUI.Units.largeSpacing
+        anchors.margins: MatsyaUI.Units.largeSpacing
+        spacing: MatsyaUI.Units.largeSpacing
 
         Item {
             id: topItem
@@ -165,11 +165,11 @@ ControlCenterDialog {
             RowLayout {
                 id: topItemLayout
                 anchors.fill: parent
-                anchors.rightMargin: FishUI.Units.largeSpacing
-                spacing: FishUI.Units.largeSpacing
+                anchors.rightMargin: MatsyaUI.Units.largeSpacing
+                spacing: MatsyaUI.Units.largeSpacing
 
                 Label {
-                    leftPadding: FishUI.Units.largeSpacing
+                    leftPadding: MatsyaUI.Units.largeSpacing
                     text: qsTr("Control Center")
                     font.bold: true
                     font.pointSize: 14
@@ -181,10 +181,10 @@ ControlCenterDialog {
                     implicitWidth: topItem.height
                     implicitHeight: topItem.height
                     Layout.alignment: Qt.AlignTop
-                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/" : "light/") + "settings.svg"
+                    source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark/" : "light/") + "settings.svg"
                     onLeftButtonClicked: {
                         control.visible = false
-                        process.startDetached("cutefish-settings")
+                        process.startDetached("matsya-settings")
                     }
                 }
 
@@ -193,10 +193,10 @@ ControlCenterDialog {
 //                    implicitWidth: topItem.height
 //                    implicitHeight: topItem.height
 //                    Layout.alignment: Qt.AlignTop
-//                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/" : "light/") + "system-shutdown-symbolic.svg"
+//                    source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark/" : "light/") + "system-shutdown-symbolic.svg"
 //                    onLeftButtonClicked: {
 //                        control.visible = false
-//                        process.startDetached("cutefish-shutdown")
+//                        process.startDetached("matsya-shutdown")
 //                    }
 //                }
             }
@@ -212,8 +212,8 @@ ControlCenterDialog {
             Rectangle {
                 anchors.fill: parent
                 color: "white"
-                radius: FishUI.Theme.bigRadius
-                opacity: FishUI.Theme.darkMode ? 0.2 : 0.7
+                radius: MatsyaUI.Theme.bigRadius
+                opacity: MatsyaUI.Theme.darkMode ? 0.2 : 0.7
             }
 
             GridLayout {
@@ -237,7 +237,7 @@ ControlCenterDialog {
                     id: wirelessItem
                     Layout.fillHeight: true
                     Layout.preferredWidth: cardItems.cellWidth
-                    icon: FishUI.Theme.darkMode || checked ? "qrc:/images/dark/network-wireless-connected-100.svg"
+                    icon: MatsyaUI.Theme.darkMode || checked ? "qrc:/images/dark/network-wireless-connected-100.svg"
                                                            : "qrc:/images/light/network-wireless-connected-100.svg"
                     visible: enabledConnections.wirelessHwEnabled
                     checked: enabledConnections.wirelessEnabled
@@ -245,7 +245,7 @@ ControlCenterDialog {
                     onClicked: nmHandler.enableWireless(!checked)
                     onPressAndHold: {
                         control.visible = false
-                        process.startDetached("cutefish-settings", ["-m", "wlan"])
+                        process.startDetached("matsya-settings", ["-m", "wlan"])
                     }
                 }
 
@@ -253,7 +253,7 @@ ControlCenterDialog {
                     id: bluetoothItem
                     Layout.fillHeight: true
                     Layout.preferredWidth: cardItems.cellWidth
-                    icon: FishUI.Theme.darkMode || checked ? "qrc:/images/dark/bluetooth-symbolic.svg"
+                    icon: MatsyaUI.Theme.darkMode || checked ? "qrc:/images/dark/bluetooth-symbolic.svg"
                                                            : "qrc:/images/light/bluetooth-symbolic.svg"
                     checked: !control.bluetoothDisConnected
                     label: qsTr("Bluetooth")
@@ -261,7 +261,7 @@ ControlCenterDialog {
                     onClicked: control.toggleBluetooth()
                     onPressAndHold: {
                         control.visible = false
-                        process.startDetached("cutefish-settings", ["-m", "bluetooth"])
+                        process.startDetached("matsya-settings", ["-m", "bluetooth"])
                     }
                 }
 
@@ -269,17 +269,17 @@ ControlCenterDialog {
                     id: darkModeItem
                     Layout.fillHeight: true
                     Layout.preferredWidth: cardItems.cellWidth
-                    icon: FishUI.Theme.darkMode || checked ? "qrc:/images/dark/dark-mode.svg"
+                    icon: MatsyaUI.Theme.darkMode || checked ? "qrc:/images/dark/dark-mode.svg"
                                                            : "qrc:/images/light/dark-mode.svg"
-                    checked: FishUI.Theme.darkMode
+                    checked: MatsyaUI.Theme.darkMode
                     label: qsTr("Dark Mode")
-                    onClicked: appearance.switchDarkMode(!FishUI.Theme.darkMode)
+                    onClicked: appearance.switchDarkMode(!MatsyaUI.Theme.darkMode)
                 }
 
                 CardItem {
                     Layout.fillHeight: true
                     Layout.preferredWidth: cardItems.cellWidth
-                    icon: FishUI.Theme.darkMode || checked ? "qrc:/images/dark/do-not-disturb.svg"
+                    icon: MatsyaUI.Theme.darkMode || checked ? "qrc:/images/dark/do-not-disturb.svg"
                                                            : "qrc:/images/light/do-not-disturb.svg"
                     checked: notifications.doNotDisturb
                     label: qsTr("Do Not Disturb")
@@ -289,13 +289,13 @@ ControlCenterDialog {
                 CardItem {
                     Layout.fillHeight: true
                     Layout.preferredWidth: cardItems.cellWidth
-                    icon: FishUI.Theme.darkMode || checked ? "qrc:/images/dark/screenshot.svg"
+                    icon: MatsyaUI.Theme.darkMode || checked ? "qrc:/images/dark/screenshot.svg"
                                                            : "qrc:/images/light/screenshot.svg"
                     checked: false
                     label: qsTr("Screenshot")
                     onClicked: {
                         control.visible = false
-                        process.startDetached("cutefish-screenshot", ["-d", "500"])
+                        process.startDetached("matsya-screenshot", ["-d", "500"])
                     }
                 }
             }
@@ -316,23 +316,23 @@ ControlCenterDialog {
                 id: brightnessItemBg
                 anchors.fill: parent
                 color: "white"
-                radius: FishUI.Theme.bigRadius
-                opacity: FishUI.Theme.darkMode ? 0.2 : 0.7
+                radius: MatsyaUI.Theme.bigRadius
+                opacity: MatsyaUI.Theme.darkMode ? 0.2 : 0.7
             }
 
             RowLayout {
                 anchors.fill: brightnessItemBg
-                anchors.leftMargin: FishUI.Units.largeSpacing
-                anchors.rightMargin: FishUI.Units.largeSpacing
-                anchors.topMargin: FishUI.Units.smallSpacing
-                anchors.bottomMargin: FishUI.Units.smallSpacing
-                spacing: FishUI.Units.largeSpacing
+                anchors.leftMargin: MatsyaUI.Units.largeSpacing
+                anchors.rightMargin: MatsyaUI.Units.largeSpacing
+                anchors.topMargin: MatsyaUI.Units.smallSpacing
+                anchors.bottomMargin: MatsyaUI.Units.smallSpacing
+                spacing: MatsyaUI.Units.largeSpacing
 
                 Image {
                     height: 16
                     width: height
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/brightness.svg"
+                    source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark" : "light") + "/brightness.svg"
                     smooth: false
                     antialiasing: true
                 }
@@ -357,7 +357,7 @@ ControlCenterDialog {
 
 //                Label {
 //                    text: brightnessSlider.value + "%"
-//                    color: FishUI.Theme.disabledTextColor
+//                    color: MatsyaUI.Theme.disabledTextColor
 //                    Layout.preferredWidth: _fontMetrics.advanceWidth("100%")
 //                }
             }
@@ -373,23 +373,23 @@ ControlCenterDialog {
                 id: volumeItemBg
                 anchors.fill: parent
                 color: "white"
-                radius: FishUI.Theme.bigRadius
-                opacity: FishUI.Theme.darkMode ? 0.2 : 0.7
+                radius: MatsyaUI.Theme.bigRadius
+                opacity: MatsyaUI.Theme.darkMode ? 0.2 : 0.7
             }
 
             RowLayout {
                 anchors.fill: volumeItemBg
-                anchors.leftMargin: FishUI.Units.largeSpacing
-                anchors.rightMargin: FishUI.Units.largeSpacing
-                anchors.topMargin: FishUI.Units.smallSpacing
-                anchors.bottomMargin: FishUI.Units.smallSpacing
-                spacing: FishUI.Units.largeSpacing
+                anchors.leftMargin: MatsyaUI.Units.largeSpacing
+                anchors.rightMargin: MatsyaUI.Units.largeSpacing
+                anchors.topMargin: MatsyaUI.Units.smallSpacing
+                anchors.bottomMargin: MatsyaUI.Units.smallSpacing
+                spacing: MatsyaUI.Units.largeSpacing
 
                 Image {
                     height: 16
                     width: height
                     sourceSize: Qt.size(width, height)
-                    source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark" : "light") + "/" + control.volumeIconName + ".svg"
+                    source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark" : "light") + "/" + control.volumeIconName + ".svg"
                     smooth: false
                     antialiasing: true
                 }
@@ -419,7 +419,7 @@ ControlCenterDialog {
 //                Label {
 //                    text: parseInt(volumeSlider.value / PulseAudio.NormalVolume * 100.0) + "%"
 //                    Layout.preferredWidth: _fontMetrics.advanceWidth("100%")
-//                    color: FishUI.Theme.disabledTextColor
+//                    color: MatsyaUI.Theme.disabledTextColor
 //                }
             }
         }
@@ -429,14 +429,14 @@ ControlCenterDialog {
         }
 
         RowLayout {
-            Layout.leftMargin: FishUI.Units.smallSpacing
-            Layout.rightMargin: FishUI.Units.smallSpacing
+            Layout.leftMargin: MatsyaUI.Units.smallSpacing
+            Layout.rightMargin: MatsyaUI.Units.smallSpacing
             spacing: 0
 
             Label {
                 id: timeLabel
-                leftPadding: FishUI.Units.smallSpacing / 2
-                color: FishUI.Theme.textColor
+                leftPadding: MatsyaUI.Units.smallSpacing / 2
+                color: MatsyaUI.Theme.textColor
 
                 Timer {
                     interval: 1000
@@ -454,12 +454,12 @@ ControlCenterDialog {
             }
 
             StandardItem {
-                width: batteryLayout.implicitWidth + FishUI.Units.largeSpacing
-                height: batteryLayout.implicitHeight + FishUI.Units.largeSpacing
+                width: batteryLayout.implicitWidth + MatsyaUI.Units.largeSpacing
+                height: batteryLayout.implicitHeight + MatsyaUI.Units.largeSpacing
 
                 onClicked: {
                     control.visible = false
-                    process.startDetached("cutefish-settings", ["-m", "battery"])
+                    process.startDetached("matsya-settings", ["-m", "battery"])
                 }
 
                 RowLayout {
@@ -473,7 +473,7 @@ ControlCenterDialog {
                         width: 22
                         height: 16
                         sourceSize: Qt.size(width, height)
-                        source: "qrc:/images/" + (FishUI.Theme.darkMode ? "dark/" : "light/") + battery.iconSource
+                        source: "qrc:/images/" + (MatsyaUI.Theme.darkMode ? "dark/" : "light/") + battery.iconSource
                         asynchronous: true
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                         antialiasing: true
@@ -482,8 +482,8 @@ ControlCenterDialog {
 
                     Label {
                         text: battery.chargePercent + "%"
-                        color: FishUI.Theme.textColor
-                        rightPadding: FishUI.Units.smallSpacing / 2
+                        color: MatsyaUI.Theme.textColor
+                        rightPadding: MatsyaUI.Units.smallSpacing / 2
                         Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
                     }
                 }

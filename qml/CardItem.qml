@@ -1,7 +1,7 @@
 /*
- * Copyright (C) 2021 CutefishOS Team.
+ * Copyright (C) 2021 MatsyaOS Team.
  *
- * Author:     Reion Wong <aj@cutefishos.com>
+ * Author:     Reion Wong <aj@matsyaos.com>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,7 +21,7 @@ import QtQuick 2.12
 import QtQuick.Controls 2.12
 import QtQuick.Layouts 1.12
 import QtGraphicalEffects 1.0
-import FishUI 1.0 as FishUI
+import MatsyaUI 1.0 as MatsyaUI
 
 Item {
     id: control
@@ -33,17 +33,17 @@ Item {
     signal clicked
     signal pressAndHold
 
-    property var backgroundColor: FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.1)
+    property var backgroundColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.1)
                                                         : Qt.rgba(0, 0, 0, 0.05)
-    property var hoverColor: FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
+    property var hoverColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.15)
                                                    : Qt.rgba(0, 0, 0, 0.1)
-    property var pressedColor: FishUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.2)
+    property var pressedColor: MatsyaUI.Theme.darkMode ? Qt.rgba(255, 255, 255, 0.2)
                                                      : Qt.rgba(0, 0, 0, 0.15)
 
-    property var highlightHoverColor: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.highlightColor, 1.1)
-                                                            : Qt.darker(FishUI.Theme.highlightColor, 1.1)
-    property var highlightPressedColor: FishUI.Theme.darkMode ? Qt.lighter(FishUI.Theme.highlightColor, 1.1)
-                                                              : Qt.darker(FishUI.Theme.highlightColor, 1.2)
+    property var highlightHoverColor: MatsyaUI.Theme.darkMode ? Qt.lighter(MatsyaUI.Theme.highlightColor, 1.1)
+                                                            : Qt.darker(MatsyaUI.Theme.highlightColor, 1.1)
+    property var highlightPressedColor: MatsyaUI.Theme.darkMode ? Qt.lighter(MatsyaUI.Theme.highlightColor, 1.1)
+                                                              : Qt.darker(MatsyaUI.Theme.highlightColor, 1.2)
 
     MouseArea {
         id: _mouseArea
@@ -63,9 +63,9 @@ Item {
 
     ColumnLayout {
         anchors.fill: parent
-        anchors.leftMargin: FishUI.Theme.smallRadius
-        anchors.rightMargin: FishUI.Theme.smallRadius
-        spacing: FishUI.Units.largeSpacing
+        anchors.leftMargin: MatsyaUI.Theme.smallRadius
+        anchors.rightMargin: MatsyaUI.Theme.smallRadius
+        spacing: MatsyaUI.Units.largeSpacing
 
         Item {
             Layout.fillHeight: true
@@ -73,8 +73,8 @@ Item {
 
         Item {
             id: imageItem
-            Layout.preferredWidth: 28 + FishUI.Units.largeSpacing * 2
-            Layout.preferredHeight: 28 + FishUI.Units.largeSpacing * 2
+            Layout.preferredWidth: 28 + MatsyaUI.Units.largeSpacing * 2
+            Layout.preferredHeight: 28 + MatsyaUI.Units.largeSpacing * 2
 
             Layout.alignment: Qt.AlignHCenter
 
@@ -97,7 +97,7 @@ Item {
                         else if (_mouseArea.containsMouse)
                             return highlightHoverColor
                         else
-                            return FishUI.Theme.highlightColor
+                            return MatsyaUI.Theme.highlightColor
                     } else {
                         if (_mouseArea.pressed)
                             return pressedColor
@@ -123,7 +123,7 @@ Item {
 
         Label {
             id: _titleLabel
-//            color: control.checked ? FishUI.Theme.highlightedTextColor : FishUI.Theme.textColor
+//            color: control.checked ? MatsyaUI.Theme.highlightedTextColor : MatsyaUI.Theme.textColor
             Layout.preferredHeight: control.height * 0.15
             Layout.alignment: Qt.AlignHCenter
             horizontalAlignment: Qt.AlignHCenter
